@@ -26,7 +26,7 @@ stages:
     - checkout: self
       submodules: true
     - template: azure-pipelines/windows/continuous-build.yml@PSModulePublisher
-    # - template: azure-pipelines/common/run-publish.yml@PSModulePublishersteps:
+    # - template: azure-pipelines/common/run-publish.yml@PSModulePublisher
     - pwsh: |
         .\build\PSModulePublisher\scripts\publish.ps1 -ModuleManifestPath $env:MODULE_MANIFEST_PATH -PublishRepository 'PSGallery' -Verbose
       displayName: Publish Module
