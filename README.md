@@ -9,7 +9,7 @@
 [badge-version-powershellgallery-releases-img]: https://img.shields.io/powershellgallery/v/MyPublishingDebugger?logo=powershell&logoColor=white&label=PSGallery&labelColor=&style=flat-square
 [badge-version-powershellgallery-releases-src]: https://www.powershellgallery.com/packages/MyPublishingDebugger/
 
-A mock powershell module for templating and reference.
+A powershell module for debugging publishing of modules.
 
 ## Installation
 
