@@ -35,8 +35,8 @@ Install-Module -Name MyPublishingDebugger -Repository PSGallery -Scope AllUsers
 # Runs Publishing-Debugger1
 Publishing-Debugger1
 
-# Runs Publishing-Debugger1
-Publishing-Debugger1
+# Runs Publishing-Debugger2
+Publishing-Debugger2
 ```
 
 ## Administration
