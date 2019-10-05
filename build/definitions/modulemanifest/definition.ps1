@@ -9,7 +9,7 @@
     GUID = 'f47bab8e-b33d-4410-83ad-f7b2dd2adc93'
     Author = 'Joel Timothy Oh'
     CompanyName = 'Joel Timothy Oh'
-    Copyright = '(c) 2019 Joel Timothy Oh.'
+    Copyright = '(c) 2019 Joel Timothy Oh'
     Description = 'A powershell module for debugging publishing of modules.'
     PowerShellVersion = '3.0'
     # PowerShellHostName = ''
