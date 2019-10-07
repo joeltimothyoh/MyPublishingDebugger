@@ -62,8 +62,8 @@ stages:
           $releaseArgsMasked = $releaseArgs.Clone()
           $releaseArgsMasked['ApiKey'] = "token *******"
           ($releaseArgsMasked | Out-String).Trim() | Write-Host
-          if (!$env:BUILD_COMMIT_TAG) {
-              throw "The environment variable '`$env:BUILD_COMMIT_TAG' is null. Not creating GitHub release."
+          if (!$BUILD_COMMIT_TAG) {
+              throw "The environment variable '`$BUILD_COMMIT_TAG' is null. Not creating GitHub release."
           }
           New-GHRepositoryRelease @releaseArgs -Verbose > $nul
       env:
