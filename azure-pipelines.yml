@@ -46,7 +46,7 @@ stages:
           $releaseBody = git --no-pager log --pretty=format:"%h %s" "$previousReleaseCommitSHA...$commitSHA"
           "Release body:" | Write-Host
           $releaseBody | Write-Host
-          $releaseArgs = [ordered]@{
+          $releaseArgs = @{
               Namespace = $namespace
               Repository = $repository
               ApiKey = $env:GITHUB_API_KEY
