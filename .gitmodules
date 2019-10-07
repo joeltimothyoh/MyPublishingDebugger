@@ -5,3 +5,4 @@
 [submodule "build/PSGitHubRestApi"]
 	path = build/PSGitHubRestApi
 	url = https://github.com/theohbrothers/PSGitHubRestApi.git
+	branch = dev
