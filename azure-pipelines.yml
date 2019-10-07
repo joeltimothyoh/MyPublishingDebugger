@@ -27,3 +27,43 @@ stages:
       submodules: true
     - template: azure-pipelines/windows/continuous-build.yml@PSModulePublisher
     - template: azure-pipelines/common/run-publish.yml@PSModulePublisher
+    - pwsh: |
+          $ErrorActionPreference = 'Stop'
+          Import-Module .\build\PSGitHubRestApi\src\PSGitHubRestApi\PSGitHubRestApi.psm1 -Force -Verbose
+          ### Begin CI-specific code: Get the namspace and project name
+          $matchInfo = $env:BUILD_REPOSITORY_URI | Select-String -Pattern '^https:\/\/github.com\/(.*?)\/(.*)'
+          $namespace = if ($matchInfo) { $matchInfo.Matches.Groups[1].Value } else { $null }
+          $repository = if ($matchInfo) { $matchInfo.Matches.Groups[2].Value } else { $null }
+          ### End of CI-specific code
+          $commitSHA =  git rev-parse HEAD
+          $allReleasesInfo = (git --no-pager log --tags --simplify-by-decoration --pretty="format:%H %d") -split "`n" | % {
+              if ($_ -match '(\s+|\()tag:(\s+(v\d+\.\d+\.\d+)[),])') { $_ }
+          }
+          "All releases:" | Write-Host
+          $allReleasesInfo | Write-Host
+          $previousReleaseCommitSHA = ($allReleasesInfo[1] -split "\s")[0]
+          "Previous release commit SHA: $previousReleaseCommitSHA" | Write-Host
+          $releaseBody = git --no-pager log --pretty=format:"%h %s" "$previousReleaseCommitSHA...$commitSHA"
+          "Release body:" | Write-Host
+          $releaseBody | Write-Host
+          $releaseArgs = @{
+              Namespace = $namespace
+              Repository = $repository
+              ApiKey = $env:GITHUB_API_KEY
+              TagName = $env:MODULE_VERSION
+              TargetCommitish = $commitSHA
+              Name = $env:MODULE_VERSION
+              Body = 'haha'
+              Draft = $false
+              Prerelease = $false
+          }
+          $releaseArgsMasked = $releaseArgs.Clone()
+          $releaseArgsMasked['ApiKey'] = "token *******"
+          ($releaseArgsMasked | Out-String).Trim() | Write-Host
+          if (!$env:MODULE_VERSION) {
+              throw "The environment variable '`$env:MODULE_VERSION' is null. Not creating GitHub release."
+          }
+          New-GHRepositoryRelease @myArgs -Verbose > $nul
+      env:
+        GITHUB_API_KEY: $(GITHUB_API_KEY)
+      displayName: Create GitHub Release

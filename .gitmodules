@@ -2,3 +2,6 @@
 	path = build/PSModulePublisher
 	url = https://github.com/theohbrothers/PSModulePublisher.git
 	branch = dev
+[submodule "build/PSGitHubRestApi"]
+	path = build/PSGitHubRestApi
+	url = https://github.com/theohbrothers/PSGitHubRestApi.git
