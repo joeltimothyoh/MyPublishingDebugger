@@ -46,7 +46,7 @@ stages:
           $releaseBody = git --no-pager log --pretty=format:"%h %s" "$previousReleaseCommitSHA...$commitSHA"
           "Release body:" | Write-Host
           $releaseBody | Write-Host
-          $myArgs = @{
+          $releaseArgs = @{
               Namespace = $namespace
               Repository = $repository
               ApiKey = $env:GITHUB_API_KEY
@@ -57,6 +57,9 @@ stages:
               Draft = $false
               Prerelease = $false
           }
+          $releaseArgsMasked = $releaseArgs.Clone()
+          $releaseArgsMasked['ApiKey'] = "token *******"
+          ($releaseArgsMasked | Out-String).Trim() | Write-Host
           New-GHRepositoryRelease @myArgs -Verbose > $nul
       env:
         GITHUB_API_KEY: $(GITHUB_API_KEY)
