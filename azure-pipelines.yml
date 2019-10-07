@@ -66,4 +66,5 @@ stages:
           New-GHRepositoryRelease @releaseArgs -Verbose > $nul
       env:
         GITHUB_API_KEY: $(GITHUB_API_KEY)
+      condition: and(startsWith(variables['Build.SourceBranch'], 'refs/tags/'), ne(variables['MODULE_VERSION'], ''))
       displayName: Create GitHub Release
