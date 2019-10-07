@@ -63,7 +63,7 @@ stages:
           if (!$env:MODULE_VERSION) {
               throw "The environment variable '`$env:MODULE_VERSION' is null. Not creating GitHub release."
           }
-          New-GHRepositoryRelease @myArgs -Verbose > $nul
+          New-GHRepositoryRelease @releaseArgs -Verbose > $nul
       env:
         GITHUB_API_KEY: $(GITHUB_API_KEY)
       displayName: Create GitHub Release
