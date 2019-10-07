@@ -60,6 +60,9 @@ stages:
           $releaseArgsMasked = $releaseArgs.Clone()
           $releaseArgsMasked['ApiKey'] = "token *******"
           ($releaseArgsMasked | Out-String).Trim() | Write-Host
+          if (!$env:MODULE_VERSION) {
+              throw "The environment variable '`$env:MODULE_VERSION' is null. Not creating GitHub release."
+          }
           New-GHRepositoryRelease @myArgs -Verbose > $nul
       env:
         GITHUB_API_KEY: $(GITHUB_API_KEY)
