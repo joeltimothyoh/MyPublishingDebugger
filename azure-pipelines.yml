@@ -9,11 +9,11 @@ pr: none
 
 resources:
   repositories:
-  - repository: PSModulePublisher
-    type: github
-    name: theohbrothers/PSModulePublisher
-    endpoint: joeltimothyoh
-    ref: refs/heads/dev
+  # - repository: PSModulePublisher
+  #   type: github
+  #   name: theohbrothers/PSModulePublisher
+  #   endpoint: joeltimothyoh
+  #   ref: refs/heads/dev
   - repository: PSGitHubRepositoryReleaser
     type: github
     name: theohbrothers/PSGitHubRepositoryReleaser
@@ -30,9 +30,9 @@ stages:
     steps:
     - checkout: self
       submodules: true
-    - template: azure-pipelines/windows/continuous-build.yml@PSModulePublisher
-    - template: azure-pipelines/common/run-publish.yml@PSModulePublisher
-    # - template: templates/azure-pipelines/repository/create-githubrelease.yml@PSGitHubRepositoryReleaser
+    # - template: azure-pipelines/windows/continuous-build.yml@PSModulePublisher
+    # - template: azure-pipelines/common/run-publish.yml@PSModulePublisher
+    - template: templates/azure-pipelines/repository/create-githubrelease.yml@PSGitHubRepositoryReleaser
     # - pwsh: |
     #       $ErrorActionPreference = 'Stop'
     #       Import-Module .\build\PSGitHubRestApi\src\PSGitHubRestApi\PSGitHubRestApi.psm1 -Force -Verbose
