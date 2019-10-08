@@ -6,3 +6,6 @@
 	path = build/PSGitHubRestApi
 	url = https://github.com/theohbrothers/PSGitHubRestApi.git
 	branch = dev
+[submodule "build/PSGitHubRepositoryReleaser"]
+	path = build/PSGitHubRepositoryReleaser
+	url = https://github.com/theohbrothers/PSGitHubRepositoryReleaser.git
