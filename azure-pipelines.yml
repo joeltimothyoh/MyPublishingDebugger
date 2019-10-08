@@ -32,7 +32,8 @@ stages:
       submodules: true
     # - template: azure-pipelines/windows/continuous-build.yml@PSModulePublisher
     # - template: azure-pipelines/common/run-publish.yml@PSModulePublisher
-    - template: templates/azure-pipelines/repository/create-githubrelease.yml@PSGitHubRepositoryReleaser
+    # - template: templates/azure-pipelines/repository/create-githubrelease.yml@PSGitHubRepositoryReleaser
+    - template: unknown/file.yml@somesource
     # - pwsh: |
     #       $ErrorActionPreference = 'Stop'
     #       Import-Module .\build\PSGitHubRestApi\src\PSGitHubRestApi\PSGitHubRestApi.psm1 -Force -Verbose
