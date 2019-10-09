@@ -6,7 +6,6 @@ trigger:
     include:
     - '*'
 pr: none
-
 resources:
   repositories:
   - repository: PSModulePublisher
@@ -18,7 +17,7 @@ resources:
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
     endpoint: joeltimothyoh
-    ref: refs/heads/dev
+    ref: refs/heads/dev-submodule
 
 stages:
 - stage: Build_Test_Publish
