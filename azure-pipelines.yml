@@ -30,8 +30,8 @@ stages:
     steps:
     - checkout: self
       submodules: true
-    - template: azure-pipelines/windows/continuous-build.yml@PSModulePublisher
-    - template: azure-pipelines/common/run-publish.yml@PSModulePublisher
+    - template: templates/azure-pipelines/windows/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/common/run-publish.yml@PSModulePublisher
     - template: templates/azure-pipelines/run-release.yml@PSRepositoryReleaseManager
     # - template: unknown/file.yml@somesource
     # - pwsh: |
