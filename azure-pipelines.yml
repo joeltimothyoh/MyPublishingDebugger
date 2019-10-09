@@ -14,9 +14,9 @@ resources:
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
     ref: refs/heads/dev
-  - repository: PSGitHubRepositoryReleaser
+  - repository: PSRepositoryReleaseManager
     type: github
-    name: theohbrothers/PSGitHubRepositoryReleaser
+    name: theohbrothers/PSRepositoryReleaseManager
     endpoint: joeltimothyoh
     ref: refs/heads/dev
 
@@ -32,7 +32,7 @@ stages:
       submodules: true
     - template: azure-pipelines/windows/continuous-build.yml@PSModulePublisher
     - template: azure-pipelines/common/run-publish.yml@PSModulePublisher
-    - template: templates/azure-pipelines/repository/create-githubrelease.yml@PSGitHubRepositoryReleaser
+    - template: templates/azure-pipelines/repository/create-githubrelease.yml@PSRepositoryReleaseManager
     # - template: unknown/file.yml@somesource
     # - pwsh: |
     #       $ErrorActionPreference = 'Stop'
