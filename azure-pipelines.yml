@@ -27,7 +27,7 @@ stages:
     pool:
       vmImage: windows-2019
     steps:
-    - checkout:
+    - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/windows/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/common/run-publish.yml@PSModulePublisher
