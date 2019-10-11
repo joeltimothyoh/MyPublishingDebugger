@@ -48,7 +48,7 @@ To import the module:
 Import-Module -Name MyPublishingDebugger -Force -Verbose
 
 # Import the git submodule
-Import-Module .\path\to\MyPublishingDebugger\MyPublishingDebugger.psm1 -Force -Verbose
+Import-Module .\src\MyPublishingDebugger\MyPublishingDebugger.psm1 -Force -Verbose
 ```
 
 To list all available functions:
