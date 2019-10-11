@@ -6,7 +6,6 @@ trigger:
     include:
     - '*'
 pr: none
-
 resources:
   repositories:
   - repository: PSModulePublisher
@@ -29,7 +28,7 @@ stages:
       vmImage: windows-2019
     steps:
     - checkout: self
-      submodules: true
+      submodules: recursive
     - template: templates/azure-pipelines/windows/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/common/run-publish.yml@PSModulePublisher
     - template: templates/azure-pipelines/run-release.yml@PSRepositoryReleaseManager
