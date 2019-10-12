@@ -47,7 +47,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
-  - job: Linux
+  - job: linux
     displayName: '[Linux]'
     pool:
       vmImage: ubuntu-16.04
@@ -55,7 +55,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/linux/continuous-build.yml@PSModulePublisher
-  - job: Linux
+  - job: linux_6_1_0
     displayName: '[Linux] [PowerShell Core 6.1.0]'
     pool:
       vmImage: ubuntu-16.04
@@ -64,7 +64,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/linux/continuous-build.yml@PSModulePublisher
-  - job: macOS
+  - job: macos
     displayName: '[macOS]'
     pool:
       vmImage: macOS-10.13
