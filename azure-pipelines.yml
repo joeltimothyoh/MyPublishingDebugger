@@ -148,11 +148,11 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/run-release.yml@PSRepositoryReleaseManager
+    - template: templates/azure-pipelines/pwsh/release.yml@PSRepositoryReleaseManager
   # - job: Linux
   #   pool:
   #     vmImage: ubuntu-16.04
   #   steps:
   #   - checkout: self
   #     submodules: recursive
-  #   - template: templates/azure-pipelines/run-release.yml@PSRepositoryReleaseManager
+  #   - template: templates/azure-pipelines/pwsh/release.yml@PSRepositoryReleaseManager
