@@ -24,7 +24,7 @@ stages:
   displayName: 'Build, Test'
   jobs:
   - job: windows_pwsh
-    displayName: '[Windows] [PowerShell Core]'
+    displayName: '[Windows] PowerShell Core'
     pool:
       vmImage: windows-2019
     steps:
@@ -32,7 +32,7 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/windows/pwsh/continuous-build.yml@PSModulePublisher
   - job: windows_powershell_5_1
-    displayName: '[Windows] [PowerShell 5.1]'
+    displayName: '[Windows] PowerShell 5.1'
     pool:
       vmImage: windows-2019
     steps:
@@ -40,7 +40,7 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/windows/pwsh/continuous-build.yml@PSModulePublisher
   - job: windows_powershell_5_0
-    displayName: '[Windows] [PowerShell 5.0]'
+    displayName: '[Windows] PowerShell 5.0'
     pool:
       vmImage: vs2015-win2012r2
     steps:
@@ -55,11 +55,17 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/linux/continuous-build.yml@PSModulePublisher
-  - job: linux_6_1_0
-    displayName: '[Linux] [PowerShell Core 6.1.0]'
+  - job: linux_container
+    displayName: '[Linux] [Container] PowerShell'
     pool:
       vmImage: ubuntu-16.04
-    container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git
+    strategy:
+      matrix:
+        6.1.0:
+          containerImage: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git
+        6.2.0:
+          containerImage: joeltimothyoh/powershell:6.2.0-ubuntu-18.04-git
+    container: $[ variables['containerImage'] ]
     steps:
     - checkout: self
       submodules: recursive
