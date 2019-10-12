@@ -24,7 +24,7 @@ stages:
   displayName: Build, Test
   jobs:
   - job: windows_pwsh
-    displayName: Windows-PowerShell6
+    displayName: Windows - PowerShell Core
     pool:
       vmImage: windows-2019
     steps:
@@ -33,7 +33,7 @@ stages:
     - template: templates/azure-pipelines/windows/pwsh/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/windows/pwsh/publish.yml@PSModulePublisher
   - job: windows_powershell_5_1
-    displayName: Windows-PowerShell65.1
+    displayName: Windows - PowerShell 5.1
     pool:
       vmImage: windows-2019
     steps:
@@ -42,7 +42,7 @@ stages:
     - template: templates/azure-pipelines/windows/pwsh/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/windows/pwsh/publish.yml@PSModulePublisher
   - job: windows_powershell_5_0
-    displayName: Windows-PowerShell65.0
+    displayName: Windows - PowerShell 5.0
     pool:
       vmImage: vs2015-win2012r2
     steps:
@@ -54,7 +54,7 @@ stages:
   displayName: Publish
   jobs:
   - job: windows
-    displayName: Windows-PowerShell6
+    displayName: PowerShell
     pool:
       vmImage: vs2015-win2012r2
     steps:
