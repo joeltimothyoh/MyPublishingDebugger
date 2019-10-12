@@ -21,7 +21,7 @@ resources:
 
 stages:
 - stage: build_test
-  displayName: 'Build, Test'
+  displayName: Build, Test
   jobs:
   - job: windows_pwsh
     displayName: '[Windows] PowerShell Core'
@@ -79,7 +79,7 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/macos/continuous-build.yml@PSModulePublisher
 - stage: publish
-  displayName: 'Publish'
+  displayName: Publish
   dependsOn: build_test
   jobs:
   # - job: linux_container
