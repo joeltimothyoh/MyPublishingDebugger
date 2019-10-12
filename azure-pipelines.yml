@@ -141,10 +141,10 @@ stages:
         "Checking for NuGet binary"
         $nugetBinPath = "$env:LOCALAPPDATA\Microsoft\Windows\PowerShell\PowerShellGet\NuGet.exe"
         if (!(Test-Path -Path $nugetBinPath -PathType Leaf)) {
-            New-Item (Split-Path -Path $nugetBinPath -Parent) -ItemType Directory -Force
+            New-Item -Path (Split-Path -Path $nugetBinPath -Parent) -ItemType Directory -Force
             Invoke-WebRequest -Uri https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile $nugetBinPath
         }
-        Get-ChildItem -Path (Split-Path -Path $nugetBinPath -Parent) -ErrorAction SilentlyContinue
+        Get-ChildItem -Path "$(Split-Path -Path $nugetBinPath -Parent)\.." -ErrorAction SilentlyContinue
         & $nugetBinPath
       displayName: Install publishing dependencies
     - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
