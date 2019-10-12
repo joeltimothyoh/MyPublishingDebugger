@@ -109,6 +109,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/windows/pwsh/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/linux/publish.yml@PSModulePublisher
   # - job: windows_powershell_5_1
   #   displayName: '[Windows] PowerShell 5.1'
   #   pool:
