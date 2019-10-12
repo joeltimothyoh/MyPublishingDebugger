@@ -75,8 +75,19 @@ stages:
 - stage: publish
   displayName: 'Publish'
   jobs:
-  - job: windows
-    displayName: '[Windows] [PowerShell Core]'
+  # - job: linux_6_1_0
+  #   displayName: '[Linux] [PowerShell Core 6.1.0]'
+  #   pool:
+  #     vmImage: ubuntu-16.04
+  #   container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/linux/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/linux/publish.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/run-release.yml@PSRepositoryReleaseManager
+  - job: windows_powershell_5_1
+    displayName: '[Windows] [PowerShell 5.1]'
     pool:
       vmImage: windows-2019
     steps:
@@ -85,3 +96,13 @@ stages:
     - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
     - template: templates/azure-pipelines/run-release.yml@PSRepositoryReleaseManager
+  # - job: windows_powershell_5_0
+  #   displayName: '[Windows] [PowerShell 5.0]'
+  #   pool:
+  #     vmImage: windows-2019
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/run-release.yml@PSRepositoryReleaseManager
