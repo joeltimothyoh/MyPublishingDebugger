@@ -56,7 +56,7 @@ stages:
   - job: windows
     displayName: PowerShell
     pool:
-      vmImage: vs2015-win2012r2
+      vmImage: windows-2019
     steps:
     - checkout: self
       submodules: recursive
