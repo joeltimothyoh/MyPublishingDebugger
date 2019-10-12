@@ -62,7 +62,7 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/macos/continuous-build.yml@PSModulePublisher
 - stage: publish
-  displayName: Publish
+  displayName: '[Publish]'
   jobs:
   - job: windows
     displayName: '[Windows] PowerShell Core'
