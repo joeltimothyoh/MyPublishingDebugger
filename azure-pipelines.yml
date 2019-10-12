@@ -12,7 +12,7 @@ resources:
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
-    ref: refs/heads/dev
+    ref: refs/heads/dev-powershell
   - repository: PSRepositoryReleaseManager
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
@@ -23,12 +23,32 @@ stages:
 - stage: Build_Test_Publish
   displayName: Build, Test, Publish
   jobs:
-  - job: Windows
+  - job: windows_pwsh
+    displayName: Windows-Pwsh
     pool:
       vmImage: windows-2019
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/windows/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/common/run-publish.yml@PSModulePublisher
+    - template: templates/azure-pipelines/windows/pwsh/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/windows/pwsh/publish.yml@PSModulePublisher
+    - template: templates/azure-pipelines/run-release.yml@PSRepositoryReleaseManager
+  - job: windows_powershell_5_1
+    displayName: Windows-Powershell5.1
+    pool:
+      vmImage: windows-2019
+    steps:
+    - checkout: self
+      submodules: recursive
+    - template: templates/azure-pipelines/windows/pwsh/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/windows/pwsh/publish.yml@PSModulePublisher
+    - template: templates/azure-pipelines/run-release.yml@PSRepositoryReleaseManager
+  - job: windows_powershell_5_0
+    pool:
+      vmImage: vs2015-win2012r2
+    steps:
+    - checkout: self
+      submodules: recursive
+    - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
     - template: templates/azure-pipelines/run-release.yml@PSRepositoryReleaseManager
