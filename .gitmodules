@@ -1,7 +1,7 @@
 [submodule "build/PSModulePublisher"]
 	path = build/PSModulePublisher
 	url = https://github.com/theohbrothers/PSModulePublisher.git
-	branch = dev-powershell
+	branch = dev
 [submodule "build/PSRepositoryReleaseManager"]
 	path = build/PSRepositoryReleaseManager
 	url = https://github.com/theohbrothers/PSRepositoryReleaseManager.git
