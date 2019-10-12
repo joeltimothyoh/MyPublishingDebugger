@@ -21,10 +21,10 @@ resources:
 
 stages:
 - stage: build_test
-  displayName: '[Build, Test]'
+  displayName: 'Build, Test'
   jobs:
   - job: windows_pwsh
-    displayName: '[Windows] PowerShell Core'
+    displayName: '[Windows] [PowerShell Core]'
     pool:
       vmImage: windows-2019
     steps:
@@ -32,7 +32,7 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/windows/pwsh/continuous-build.yml@PSModulePublisher
   - job: windows_powershell_5_1
-    displayName: '[Windows] PowerShell 5.1'
+    displayName: '[Windows] [PowerShell 5.1]'
     pool:
       vmImage: windows-2019
     steps:
@@ -40,7 +40,7 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/windows/pwsh/continuous-build.yml@PSModulePublisher
   - job: windows_powershell_5_0
-    displayName: '[Windows] PowerShell 5.0'
+    displayName: '[Windows] [PowerShell 5.0]'
     pool:
       vmImage: vs2015-win2012r2
     steps:
@@ -64,10 +64,10 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/macos/continuous-build.yml@PSModulePublisher
 - stage: publish
-  displayName: '[Publish]'
+  displayName: 'Publish'
   jobs:
   - job: windows
-    displayName: '[Windows] PowerShell Core'
+    displayName: '[Windows] [PowerShell Core]'
     pool:
       vmImage: windows-2019
     steps:
