@@ -80,6 +80,7 @@ stages:
     - template: templates/azure-pipelines/macos/continuous-build.yml@PSModulePublisher
 - stage: publish
   displayName: 'Publish'
+  dependsOn: build_test
   jobs:
   # - job: linux_container
   #   displayName: '[Linux] [Container]'
@@ -111,6 +112,7 @@ stages:
   #   - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
 - stage: release
   displayName: Release
+  dependsOn: publish
   jobs:
   - job: linux_container
     displayName: '[Linux] [Container]'
