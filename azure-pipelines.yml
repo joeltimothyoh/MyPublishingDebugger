@@ -138,17 +138,15 @@ stages:
     - powershell: |
         $ErrorActionPreference = 'Stop'
         $VerbosePreference = 'Continue'
-        "Invoking dotnet" | Write-Host
-        dotnet --info
-        if ($PSVersionTable.PSVersion -lt '5.1') {
-            "Installing dotnet" | Write-Host
-            Invoke-WebRequest -Uri 'https://dot.net/v1/dotnet-install.ps1' -OutFile '.\dotnet-install.ps1'; & '.\dotnet-install.ps1' -Channel Current -Version '2.0.0'
-            dotnet --info
+        "Checking for NuGet binary"
+        $nugetBinPath = "$env:LOCALAPPDATA\Microsoft\Windows\PowerShell\PowerShellGet\NuGet.exe"
+        if (!(Test-Path -Path $nugetBinPath -PathType Leaf)) {
+            New-Item (Split-Path -Path $nugetBinPath -Parent) -ItemType Directory -Force
+            Invoke-WebRequest -Uri https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile $nugetBinPath
         }
-        # Get-ChildItem -Path "$env:LOCALAPPDATA\Microsoft\Windows\PowerShell" -Recurse
-        # Invoke-WebRequest -Uri https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile "$env:LOCALAPPDATA\Microsoft\Windows\PowerShell\PowerShellGet\NuGet.exe"
-        # .\nuget.exe
-      displayName: Install dotnet
+        Get-ChildItem -Path (Split-Path -Path $nugetBinPath -Parent) -ErrorAction SilentlyContinue
+        & $nugetBinPath
+      displayName: Install publishing dependencies
     - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
 - stage: release
   displayName: Release
