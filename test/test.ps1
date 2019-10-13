@@ -2,7 +2,6 @@
 param()
 
 Set-StrictMode -Version Latest
-$global:PesterDebugPreference_ShowFullErrors = $true
 $ErrorActionPreference = 'Stop'
 
 "Installing test dependencies" | Write-Host
@@ -13,13 +12,14 @@ $pesterMinimumVersion = [version]'4.0.0'
 $pester = Get-Module 'Pester' -ListAvailable -ErrorAction SilentlyContinue
 if (!$pester -or !($pester.Version -gt $pesterMinimumVersion)) {
     "Installing Pester" | Write-Host
-    Install-Module -Name 'Pester' -Repository 'PSGallery' -MinimumVersion $pesterMinimumVersion  -Scope CurrentUser -Force
+    Install-Module -Name 'Pester' -Repository 'PSGallery' -MinimumVersion $pesterMinimumVersion -Scope CurrentUser -Force
 }
 Get-Module Pester -ListAvailable
 
-# Begin tests
-"`nBegin tests" | Write-Host
+# Run tests
+"Running tests" | Write-Host
 try {
+    $global:PesterDebugPreference_ShowFullErrors = $true
     Publishing-Debugger1 -Verbose
     Publishing-Debugger2 -Verbose
 
