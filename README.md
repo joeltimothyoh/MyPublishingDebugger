@@ -47,7 +47,7 @@ To import the module:
 # Import the installed version
 Import-Module -Name MyPublishingDebugger -Force -Verbose
 
-# Import the git submodule
+# Import the project version
 Import-Module .\src\MyPublishingDebugger\MyPublishingDebugger.psm1 -Force -Verbose
 ```
 
