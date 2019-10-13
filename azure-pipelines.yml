@@ -81,7 +81,7 @@ stages:
     - template: templates/azure-pipelines/macos/continuous-build.yml@PSModulePublisher
 - stage: publish
   displayName: Publish
-  # dependsOn: build_test
+  dependsOn: build_test
   jobs:
   # - job: linux
   #   displayName: '[Linux]'
