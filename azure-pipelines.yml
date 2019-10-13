@@ -135,12 +135,6 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
-    - powershell: |
-        dotnet --info
-        Push-Location -Path $env:LOCALAPPDATA\Microsoft\Windows\PowerShell\PowerShellGet\
-        Get-ChildItem -Recurse 
-        # Invoke-WebRequest -Uri https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile "$env:LOCALAPPDATA\Microsoft\Windows\PowerShell\PowerShellGet\NuGet.exe"
-        # .\nuget.exe
     - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
 - stage: release
   displayName: Release
