@@ -3,6 +3,8 @@ param()
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+$VerbosePreference = 'Continue'
+$global:PesterDebugPreference_ShowFullErrors = $true
 
 "Installing test dependencies" | Write-Host
 
@@ -19,7 +21,6 @@ Get-Module Pester -ListAvailable
 # Run tests
 "Running tests" | Write-Host
 try {
-    $global:PesterDebugPreference_ShowFullErrors = $true
     Publishing-Debugger1 -Verbose
     Publishing-Debugger2 -Verbose
 
