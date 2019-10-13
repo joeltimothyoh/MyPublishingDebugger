@@ -71,7 +71,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/linux/continuous-build.yml@PSModulePublisher
-  - job: macos_1014
+  - job: macos
     displayName: '[macOS]'
     pool:
       vmImage: macOS-10.14
