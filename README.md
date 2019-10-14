@@ -22,33 +22,26 @@ Register-PSRepository -Default
 To install the module:
 
 ```powershell
-# For the current user
-Install-Module -Name MyPublishingDebugger -Repository PSGallery -Scope CurrentUser
+# Latest, for the current user
+Install-Module -Name MyPublishingDebugger -Repository PSGallery -Scope CurrentUser -Verbose
 
-# For all users
-Install-Module -Name MyPublishingDebugger -Repository PSGallery -Scope AllUsers
+# Specific version, for the current user
+Install-Module -Name MyPublishingDebugger -Repository PSGallery -RequiredVersion 0.0.41 -Scope CurrentUser -Verbose
+
+# Latest, for all users
+Install-Module -Name MyPublishingDebugger -Repository PSGallery -Scope AllUsers -Verbose
 ```
 
 ## Usage
 
+### Functions
+
 ```powershell
 # Runs Publishing-Debugger1
-Publishing-Debugger1
+Publishing-Debugger1 -Verbose
 
 # Runs Publishing-Debugger2
 Publishing-Debugger2
-```
-
-## Administration
-
-To import the module:
-
-```powershell
-# Import the installed version
-Import-Module -Name MyPublishingDebugger -Force -Verbose
-
-# Import the git submodule
-Import-Module .\src\MyPublishingDebugger\MyPublishingDebugger.psm1 -Force -Verbose
 ```
 
 To list all available functions:
@@ -57,14 +50,89 @@ To list all available functions:
 Get-Command -Module MyPublishingDebugger
 ```
 
-To list all installed versions:
+### Module
+
+To import / re-import the module:
 
 ```powershell
-Get-Module -Name MyPublishingDebugger -ListAvailable
+# Installed version
+Import-Module -Name MyPublishingDebugger -Force -Verbose
+
+# Project version
+Import-Module .\src\MyPublishingDebugger\MyPublishingDebugger.psm1 -Force -Verbose
+```
+
+To remove imported functions of the module:
+
+```powershell
+Remove-Module -Name MyPublishingDebugger -Verbose
+```
+
+## Administration
+
+### Module
+
+To list imported versions of the module:
+
+```powershell
+Get-Module -Name MyPublishingDebugger
+```
+
+To list all installed versions of the module available for import:
+
+```powershell
+Get-Module -Name MyPublishingDebugger -ListAvailable -Verbose
+```
+
+To list versions of the module on `PSGallery`:
+
+```powershell
+# Latest
+Find-Module -Name MyPublishingDebugger -Repository PSGallery -Verbose
+
+# All versions
+Find-Module -Name MyPublishingDebugger -Repository PSGallery -AllVersions -Verbose
 ```
 
 To update the module:
 
 ```powershell
+# Latest
 Update-Module -Name MyPublishingDebugger -Verbose
+
+# Specific version (Existing versions are left intact)
+Update-Module -Name MyPublishingDebugger -RequiredVersion 0.0.30 -Verbose
+```
+
+To uninstall the module:
+
+```powershell
+# Latest
+Uninstall-Module -Name MyPublishingDebugger -Verbose
+
+# All versions
+Uninstall-Module -Name MyPublishingDebugger -AllVersions -Verbose
+
+# To uninstall all other versions
+Get-Module -Name MyPublishingDebugger -ListAvailable | ? { $_.Version -ne '0.0.41' } | % { Uninstall-Module -Name $_.Name -RequiredVersion $_.Version -Verbose }
+
+# Tip: Use Uninstall-Module -WhatIf to simulate uninstalls
+```
+
+### Repository
+
+To get all registered repositories:
+
+```powershell
+Get-PSRepository -Verbose
+```
+
+To set the installation policy for a repository:
+
+```powershell
+# PSGallery (trusted)
+Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -Verbose
+
+# PSGallery (untrusted)
+Set-PSRepository -Name PSGallery -InstallationPolicy Untrusted -Verbose
 ```

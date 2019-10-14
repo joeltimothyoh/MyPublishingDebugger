@@ -2,23 +2,26 @@
 param()
 
 Set-StrictMode -Version Latest
+$VerbosePreference = 'Continue'
 $global:PesterDebugPreference_ShowFullErrors = $true
-$ErrorActionPreference = 'Stop'
 
-"Installing dependencies" | Write-Host
-# Install Pester if needed
-$pester = Get-Module Pester -ListAvailable -ErrorAction SilentlyContinue
-if ( ! $pester -or $pester.Version.Major -lt 4 ) {
-    Install-Module Pester -Force -Scope CurrentUser
+# Install test dependencies
+"Installing test dependencies" | Write-Host
+& "$PSScriptRoot\Install-TestDependencies.ps1"
+
+# Run unit tests
+"Running unit tests" | Write-Host
+$testFailed = $false
+$result = Invoke-Pester -Script "$PSScriptRoot\..\src\MyPublishingDebugger" -PassThru
+if ($result.FailedCount -gt 0) {
+    "$($result.FailedCount) tests failed."
+    $testFailed = $true
 }
-Get-Module Pester -ListAvailable
 
-# Begin tests
-"`nBegin tests" | Write-Host
-try {
-    Publishing-Debugger1 -Verbose
-    Publishing-Debugger2 -Verbose
+# Run integration tests
+"Running integration tests" | Write-Host
+& "$PSScriptRoot\Run-IntegrationTests.ps1"
 
-}catch {
+if ($testFailed) {
     throw
 }

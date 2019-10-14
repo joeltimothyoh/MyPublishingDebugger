@@ -1,11 +1,11 @@
-# - Initial release: Run 'New-GUID' to generate a unique GUID for identifying the module on PSGallery. Then fill in all other relevant details.
-# - Subsequent releases: Update all relevant details.
-# - To publish the module, tag the commit that is to be published and push the tag.
-# - You can use dev-entrypoint.ps1 in your development environment to simulate generation of the manifest.
+# - Initial setup: Fill in the GUID value. Generate one by running the command 'New-GUID'. Then fill in all relevant details.
+# - Ensure all relevant details are updated prior to publishing each version of the module.
+# - To simulate generation of the manifest based on this definition, run the included development entrypoint script Invoke-PSModulePublisher.ps1.
+# - To publish the module, tag the associated commit and push the tag.
 
 @{
     RootModule = 'MyPublishingDebugger.psm1'
-    # ModuleVersion = ''                            # Value will be set on a release based on the release tag. Defaults to '0.0.0' in development environments and regular CI builds
+    # ModuleVersion = ''                            # Value will be set for each publication based on the tag ref. Defaults to '0.0.0' in development environments and regular CI builds
     GUID = 'f47bab8e-b33d-4410-83ad-f7b2dd2adc93'
     Author = 'Joel Timothy Oh'
     CompanyName = 'Joel Timothy Oh'
@@ -42,7 +42,7 @@
                 'template'
                 'psgallery'
             )
-            LicenseUri = 'https://github.com/joeltimothyoh/MyPublishingDebugger/blob/master/LICENSE'
+            LicenseUri = 'https://raw.githubusercontent.com/joeltimothyoh/MyPublishingDebugger/master/LICENSE'
             ProjectUri = 'https://github.com/joeltimothyoh/MyPublishingDebugger'
             # IconUri = ''
             # ReleaseNotes = ''
