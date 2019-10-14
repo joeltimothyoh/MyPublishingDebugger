@@ -22,15 +22,14 @@ Register-PSRepository -Default
 To install the module:
 
 ```powershell
-# Latest, For the current user
+# Latest, for the current user
 Install-Module -Name MyPublishingDebugger -Repository PSGallery -Scope CurrentUser -Verbose
 
-# Specific, for the current user
+# Specific version, for the current user
 Install-Module -Name MyPublishingDebugger -Repository PSGallery -RequiredVersion 0.0.41 -Scope CurrentUser -Verbose
 
 # Latest, for all users
 Install-Module -Name MyPublishingDebugger -Repository PSGallery -Scope AllUsers -Verbose
-
 ```
 
 ## Usage
@@ -85,7 +84,7 @@ To list all installed versions of the module available for import:
 Get-Module -Name MyPublishingDebugger -ListAvailable -Verbose
 ```
 
-To list versions of the module on PSGallery:
+To list versions of the module on `PSGallery`:
 
 ```powershell
 # Latest
