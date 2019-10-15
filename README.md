@@ -49,7 +49,7 @@ Publishing-Debugger1 -Verbose
 To run Publishing-Debugger2:
 
 ```powershell
-Publishing-Debugger2
+Publishing-Debugger2 -Verbose
 ```
 
 ## Administration
