@@ -128,7 +128,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher  
+    - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
   # - job: windows_1803
   #   displayName: '[Windows Server Core 1803]'
   #   pool:
