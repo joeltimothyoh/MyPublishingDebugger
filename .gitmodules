@@ -1,7 +1,7 @@
 [submodule "build/PSModulePublisher"]
 	path = build/PSModulePublisher
 	url = https://github.com/theohbrothers/PSModulePublisher.git
-	branch = dev-publish-powershell5-vm-nuget-binary-dependency
+	branch = dev
 [submodule "build/PSRepositoryReleaseManager"]
 	path = build/PSRepositoryReleaseManager
 	url = https://github.com/theohbrothers/PSRepositoryReleaseManager.git
