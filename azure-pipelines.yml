@@ -147,7 +147,6 @@ stages:
   #     submodules: recursive
   #   - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
-
 - stage: release
   displayName: Release
   dependsOn: publish
