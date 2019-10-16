@@ -129,24 +129,24 @@ stages:
   #     submodules: recursive
   #   - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher  
-  # - job: windows_1803
-  #   displayName: '[Windows Server Core 1803]'
-  #   pool:
-  #     vmImage: win1803
-  #   steps:
-  #   - checkout: self
-  #     submodules: recursive
-  #   - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
-  #   - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
-  - job: windows_2016
-    displayName: '[Windows Server 2016]'
+  - job: windows_1803
+    displayName: '[Windows Server Core 1803]'
     pool:
-      vmImage: vs2017-win2016
+      vmImage: win1803
     steps:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
+  # - job: windows_2016
+  #   displayName: '[Windows Server 2016]'
+  #   pool:
+  #     vmImage: vs2017-win2016
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
 - stage: release
   displayName: Release
   dependsOn: publish
