@@ -54,15 +54,15 @@ To run Publishing-Debugger2:
 Publishing-Debugger2 -Verbose
 ```
 
-## Administration
-
-### Versions
-
 To list all available functions of the module:
 
 ```powershell
 Get-Command -Module MyPublishingDebugger
 ```
+
+## Administration
+
+### Versions
 
 To list versions of the module on `PSGallery`:
 
