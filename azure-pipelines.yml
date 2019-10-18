@@ -63,9 +63,9 @@ stages:
 #     strategy:
 #       matrix:
 #         6.2.0:
-#           containerImage: joeltimothyoh/powershell:6.2.0-ubuntu-18.04-git
+#           containerImage: joeltimothyoh/powershell:6.2.0-ubuntu-18.04-git-sudo
 #         6.1.0:
-#           containerImage: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git
+#           containerImage: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git-sudo
 #     container: $[ variables['containerImage'] ]
 #     steps:
 #     - checkout: self
@@ -79,24 +79,24 @@ stages:
 #     - checkout: self
 #       submodules: recursive
 #     - template: templates/azure-pipelines/macos/continuous-build.yml@PSModulePublisher
-- stage: publish
-  displayName: Publish
-  # dependsOn: build_test
-  jobs:
-  # - job: linux
-  #   displayName: '[Linux]'
+# - stage: publish
+#   displayName: Publish
+#   # dependsOn: build_test
+#   jobs:
+  # - job: linux_container
+  #   displayName: '[Linux] [Container]'
   #   pool:
   #     vmImage: ubuntu-16.04
+  #   container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git-sudo
   #   steps:
   #   - checkout: self
   #     submodules: recursive
   #   - template: templates/azure-pipelines/linux/continuous-build.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/linux/publish.yml@PSModulePublisher
-  # - job: linux_container
-  #   displayName: '[Linux] [Container]'
+  # - job: linux
+  #   displayName: '[Linux]'
   #   pool:
   #     vmImage: ubuntu-16.04
-  #   container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git
   #   steps:
   #   - checkout: self
   #     submodules: recursive
@@ -120,15 +120,15 @@ stages:
   #     submodules: recursive
   #   - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
-  - job: windows_powershell_5_0
-    displayName: '[Windows] PowerShell 5.0'
-    pool:
-      vmImage: vs2015-win2012r2
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
+  # - job: windows_powershell_5_0
+  #   displayName: '[Windows] PowerShell 5.0'
+  #   pool:
+  #     vmImage: vs2015-win2012r2
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
   # - job: windows_1803
   #   displayName: '[Windows Server Core 1803]'
   #   pool:
@@ -147,23 +147,39 @@ stages:
   #     submodules: recursive
   #   - template: templates/azure-pipelines/windows/powershell/continuous-build.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/windows/powershell/publish.yml@PSModulePublisher
-- stage: release
-  displayName: Release
-  dependsOn: publish
+# - stage: release
+#   displayName: Release
+#   dependsOn: publish
+#   jobs:
+#   - job: linux_container
+#     displayName: '[Linux] [Container] PowerShell Core'
+#     pool:
+#       vmImage: ubuntu-16.04
+#     container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git-sudo
+#     steps:
+#     - checkout: self
+#       submodules: recursive
+#     - template: templates/azure-pipelines/pwsh/release.yml@PSRepositoryReleaseManager
+#   # - job: Linux
+#   #   pool:
+#   #     vmImage: ubuntu-16.04
+#   #   steps:
+#   #   - checkout: self
+#   #     submodules: recursive
+#   #   - template: templates/azure-pipelines/pwsh/release.yml@PSRepositoryReleaseManager
+
+- stage: publish_release
+  displayName: Publish, Release
+  # dependsOn: build_test
   jobs:
   - job: linux_container
-    displayName: '[Linux] [Container]'
+    displayName: '[Linux] [Container] PowerShell Core'
     pool:
       vmImage: ubuntu-16.04
-    container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git
+    container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git-sudo
     steps:
     - checkout: self
       submodules: recursive
+    - template: templates/azure-pipelines/linux/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/linux/publish.yml@PSModulePublisher
     - template: templates/azure-pipelines/pwsh/release.yml@PSRepositoryReleaseManager
-  # - job: Linux
-  #   pool:
-  #     vmImage: ubuntu-16.04
-  #   steps:
-  #   - checkout: self
-  #     submodules: recursive
-  #   - template: templates/azure-pipelines/pwsh/release.yml@PSRepositoryReleaseManager
