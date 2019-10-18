@@ -13,12 +13,12 @@ resources:
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
-    ref: refs/heads/dev
+    ref: refs/tags/v0.2.1
   - repository: PSRepositoryReleaseManager
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
     endpoint: joeltimothyoh
-    ref: refs/heads/dev
+    ref: refs/tags/v0.2.1
 
 stages:
 # - stage: build_test
