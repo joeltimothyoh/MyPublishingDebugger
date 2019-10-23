@@ -31,7 +31,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/windows/pwsh/continuous-build.yml@PSModulePublisher
   - job: windows_powershell_5_1
     displayName: '[Windows] PowerShell 5.1'
     pool:
@@ -109,8 +109,8 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/entrypoint/windows/publish.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/windows/pwsh/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/windows/pwsh/publish.yml@PSModulePublisher
   # - job: windows_powershell_5_1
   #   displayName: '[Windows] PowerShell 5.1'
   #   pool:
