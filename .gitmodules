@@ -5,4 +5,4 @@
 [submodule "build/PSRepositoryReleaseManager"]
 	path = build/PSRepositoryReleaseManager
 	url = https://github.com/theohbrothers/PSRepositoryReleaseManager.git
-	branch = dev
+	branch = release/v0.4.0
