@@ -169,16 +169,16 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/pwsh/generate.yml@PSRepositoryReleaseManager
-    - template: templates/azure-pipelines/entrypoint/pwsh/release.yml@PSRepositoryReleaseManager
+    - template: templates/azure-pipelines/entrypoint/generate.yml@PSRepositoryReleaseManager
+    - template: templates/azure-pipelines/entrypoint/release.yml@PSRepositoryReleaseManager
   # - job: Linux
   #   pool:
   #     vmImage: ubuntu-16.04
   #   steps:
   #   - checkout: self
   #     submodules: recursive
-  #   - template: templates/azure-pipelines/entrypoint/pwsh/generate.yml@PSRepositoryReleaseManager
-  #   - template: templates/azure-pipelines/entrypoint/pwsh/release.yml@PSRepositoryReleaseManager
+  #   - template: templates/azure-pipelines/entrypoint/generate.yml@PSRepositoryReleaseManager
+  #   - template: templates/azure-pipelines/entrypoint/release.yml@PSRepositoryReleaseManager
 # - stage: publish_release
 #   displayName: Publish, Release
 #   # dependsOn: build_test
@@ -193,5 +193,5 @@ stages:
 #       submodules: recursive
 #     - template: templates/azure-pipelines/linux/continuous-build.yml@PSModulePublisher
 #     - template: templates/azure-pipelines/linux/publish.yml@PSModulePublisher
-  #   - template: templates/azure-pipelines/entrypoint/pwsh/generate.yml@PSRepositoryReleaseManager
-#     - template: templates/azure-pipelines/entrypoint/pwsh/release.yml@PSRepositoryReleaseManager
+  #   - template: templates/azure-pipelines/entrypoint/generate.yml@PSRepositoryReleaseManager
+#     - template: templates/azure-pipelines/entrypoint/release.yml@PSRepositoryReleaseManager
