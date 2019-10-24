@@ -17,7 +17,7 @@ resources:
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
-    ref: refs/heads/release/v0.3.0
+    ref: refs/heads/fix-azure-pipelines-publish-powershell-template-references
   - repository: PSRepositoryReleaseManager
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
