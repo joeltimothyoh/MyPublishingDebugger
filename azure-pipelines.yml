@@ -24,6 +24,9 @@ resources:
     endpoint: joeltimothyoh
     ref: refs/tags/v0.4.1
 
+variables:
+  PUBLISH_DRY_RUN: true
+
 stages:
 # - stage: build_test
 #   displayName: Build, Test
@@ -83,11 +86,10 @@ stages:
 #     - checkout: self
 #       submodules: recursive
 #     - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
+
 - stage: publish
   displayName: Publish
   # dependsOn: build_test
-  variables:
-    PUBLISH_DRY_RUN: true
   jobs:
   - job: windows_pwsh
     displayName: '[Windows] PowerShell Core'
@@ -162,6 +164,7 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
+
 - stage: release
   displayName: Release
   dependsOn: publish
