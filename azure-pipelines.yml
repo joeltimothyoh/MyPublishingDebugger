@@ -25,7 +25,7 @@ resources:
     ref: refs/tags/v0.4.1
 
 variables:
-  PUBLISH_DRY_RUN: false
+  PUBLISH_DRY_RUN: true
 
 stages:
 - stage: build_test
