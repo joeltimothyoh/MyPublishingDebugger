@@ -145,16 +145,16 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
-  - job: linux_container
-    displayName: '[Linux] [Container] PowerShell Core'
-    pool:
-      vmImage: ubuntu-16.04
-    container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git-sudo
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
+  # - job: linux_container
+  #   displayName: '[Linux] [Container] PowerShell Core'
+  #   pool:
+  #     vmImage: ubuntu-16.04
+  #   container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git-sudo
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
   - job: macos
     displayName: '[macOS] PowerShell Core'
     pool:
