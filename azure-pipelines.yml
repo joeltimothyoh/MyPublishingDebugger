@@ -165,6 +165,7 @@ stages:
 - stage: release
   displayName: Release
   dependsOn: publish
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'), eq(variables['PUBLISH_DRY_RUN'], ''))
   jobs:
   - job: linux_container
     displayName: '[Linux] [Container] PowerShell Core'
