@@ -168,7 +168,7 @@ stages:
 - stage: release
   displayName: Release
   dependsOn: publish
-  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'), eq(variables['PUBLISH_DRY_RUN'], ''))
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'), ne(variables['PUBLISH_DRY_RUN'], 'true'))
   jobs:
   - job: linux_container
     displayName: '[Linux] [Container] PowerShell Core'
@@ -202,5 +202,5 @@ stages:
 #       submodules: recursive
 #     - template: templates/azure-pipelines/linux/continuous-build.yml@PSModulePublisher
 #     - template: templates/azure-pipelines/linux/publish.yml@PSModulePublisher
-  #   - template: templates/azure-pipelines/entrypoint/generate.yml@PSRepositoryReleaseManager
+#     - template: templates/azure-pipelines/entrypoint/generate.yml@PSRepositoryReleaseManager
 #     - template: templates/azure-pipelines/entrypoint/release.yml@PSRepositoryReleaseManager
