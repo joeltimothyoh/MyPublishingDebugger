@@ -227,7 +227,7 @@ stages:
     - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
   - job: windows_1803
-    displayName: '[Windows Server Core 1803]'
+    displayName: '[Windows Server Core 1803] Windows PowerShell'
     pool:
       vmImage: win1803
     steps:
@@ -236,7 +236,7 @@ stages:
     - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
   - job: windows_2016
-    displayName: '[Windows Server 2016]'
+    displayName: '[Windows Server 2016] Windows PowerShell'
     pool:
       vmImage: vs2017-win2016
     steps:
