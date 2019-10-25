@@ -64,7 +64,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
-  - job: linux
+  - job: linux_1604
     displayName: '[Ubuntu 16.04] PowerShell Core'
     pool:
       vmImage: ubuntu-18.04
@@ -87,7 +87,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
-  - job: linux_container
+  - job: linux_1604_container
     displayName: '[Ubuntu 16.04] [Container] PowerShell'
     pool:
       vmImage: ubuntu-16.04
@@ -179,7 +179,7 @@ stages:
     - template: templates/azure-pipelines/entrypoint/release.yml@PSRepositoryReleaseManager
   # - job: Linux
   #   pool:
-  #     vmImage: ubuntu-16.04
+  #     vmImage: ubuntu-18.04
   #   steps:
   #   - checkout: self
   #     submodules: recursive
@@ -245,7 +245,7 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
-  - job: linux
+  - job: linux_1604
     displayName: '[Ubuntu 16.04] PowerShell Core'
     pool:
       vmImage: ubuntu-16.04
@@ -264,7 +264,7 @@ stages:
   #     submodules: recursive
   #   - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
-  # - job: linux_container
+  # - job: linux_1604_container
   #   displayName: '[Ubuntu 16.04] [Container] PowerShell Core'
   #   pool:
   #     vmImage: ubuntu-16.04
