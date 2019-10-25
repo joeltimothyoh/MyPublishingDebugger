@@ -11,11 +11,11 @@
 
 ## Introduction
 
-A powershell module for debugging publishing of modules.
+A PowerShell module for debugging publishing of modules.
 
 ## Requirements
 
-- [Windows PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell?view=powershell-5.1) or [PowerShell Core](https://github.com/powershell/powershell).
+- [Windows PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell?view=powershell-5.1) or [PowerShell Core](https://github.com/powershell/powershell#-powershell).
 
 ## Installation
 
