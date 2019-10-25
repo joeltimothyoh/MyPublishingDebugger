@@ -166,7 +166,7 @@ stages:
 - stage: publish_dry_run
   displayName: Publish Dry Run
   dependsOn: []
-  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'), eq(variables['PUBLISH_DRY_RUN'], 'true'))
   jobs:
   - job: windows_pwsh
     displayName: '[Windows] PowerShell Core'
