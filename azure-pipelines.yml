@@ -87,24 +87,24 @@ stages:
   displayName: Publish
   dependsOn: build_test
   jobs:
-  - job: windows_pwsh
-    displayName: '[Windows] PowerShell Core'
-    pool:
-      vmImage: windows-2019
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/entrypoint/windows/publish.yml@PSModulePublisher
-  - job: windows_powershell_5_1
-    displayName: '[Windows] PowerShell 5.1'
-    pool:
-      vmImage: windows-2019
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
+  # - job: windows_pwsh
+  #   displayName: '[Windows] PowerShell Core'
+  #   pool:
+  #     vmImage: windows-2019
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/windows/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/windows/publish.yml@PSModulePublisher
+  # - job: windows_powershell_5_1
+  #   displayName: '[Windows] PowerShell 5.1'
+  #   pool:
+  #     vmImage: windows-2019
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
   - job: windows_powershell_5_0
     displayName: '[Windows] PowerShell 5.0'
     pool:
@@ -114,52 +114,52 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
-  - job: windows_1803
-    displayName: '[Windows Server Core 1803]'
-    pool:
-      vmImage: win1803
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
-  - job: windows_2016
-    displayName: '[Windows Server 2016]'
-    pool:
-      vmImage: vs2017-win2016
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
-  - job: linux
-    displayName: '[Linux] PowerShell Core'
-    pool:
-      vmImage: ubuntu-16.04
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
-  - job: linux_container
-    displayName: '[Linux] [Container] PowerShell Core'
-    pool:
-      vmImage: ubuntu-16.04
-    container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git-sudo
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
-  - job: macos
-    displayName: '[macOS] PowerShell Core'
-    pool:
-      vmImage: macOS-10.14
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
+  # - job: windows_1803
+  #   displayName: '[Windows Server Core 1803]'
+  #   pool:
+  #     vmImage: win1803
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
+  # - job: windows_2016
+  #   displayName: '[Windows Server 2016]'
+  #   pool:
+  #     vmImage: vs2017-win2016
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
+  # - job: linux
+  #   displayName: '[Linux] PowerShell Core'
+  #   pool:
+  #     vmImage: ubuntu-16.04
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
+  # - job: linux_container
+  #   displayName: '[Linux] [Container] PowerShell Core'
+  #   pool:
+  #     vmImage: ubuntu-16.04
+  #   container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git-sudo
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
+  # - job: macos
+  #   displayName: '[macOS] PowerShell Core'
+  #   pool:
+  #     vmImage: macOS-10.14
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
 - stage: release
   displayName: Release
   dependsOn: publish
