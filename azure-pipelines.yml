@@ -139,6 +139,30 @@ stages:
   #   - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
 
+- stage: release
+  displayName: Release
+  dependsOn: publish
+  condition: and(succeeded(), ne(variables['PUBLISH_DRY_RUN'], 'true'))
+  jobs:
+  - job: linux_container
+    displayName: '[Linux] [Container] PowerShell Core'
+    pool:
+      vmImage: ubuntu-16.04
+    container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git
+    steps:
+    - checkout: self
+      submodules: recursive
+    - template: templates/azure-pipelines/entrypoint/generate.yml@PSRepositoryReleaseManager
+    - template: templates/azure-pipelines/entrypoint/release.yml@PSRepositoryReleaseManager
+  # - job: Linux
+  #   pool:
+  #     vmImage: ubuntu-16.04
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/generate.yml@PSRepositoryReleaseManager
+  #   - template: templates/azure-pipelines/entrypoint/release.yml@PSRepositoryReleaseManager
+
 - stage: publish_dry_run
   displayName: Publish Dry Run
   dependsOn: []
@@ -217,27 +241,3 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
-
-- stage: release
-  displayName: Release
-  dependsOn: publish
-  condition: and(succeeded(), ne(variables['PUBLISH_DRY_RUN'], 'true'))
-  jobs:
-  - job: linux_container
-    displayName: '[Linux] [Container] PowerShell Core'
-    pool:
-      vmImage: ubuntu-16.04
-    container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/generate.yml@PSRepositoryReleaseManager
-    - template: templates/azure-pipelines/entrypoint/release.yml@PSRepositoryReleaseManager
-  # - job: Linux
-  #   pool:
-  #     vmImage: ubuntu-16.04
-  #   steps:
-  #   - checkout: self
-  #     submodules: recursive
-  #   - template: templates/azure-pipelines/entrypoint/generate.yml@PSRepositoryReleaseManager
-  #   - template: templates/azure-pipelines/entrypoint/release.yml@PSRepositoryReleaseManager
