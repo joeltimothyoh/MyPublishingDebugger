@@ -11,7 +11,7 @@
 
 ## Introduction
 
-A powershell module for debugging publishing of modules.
+A PowerShell module for debugging publishing of modules.
 
 ## Requirements
 
