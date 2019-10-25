@@ -91,7 +91,7 @@ stages:
 - stage: publish
   displayName: Publish
   dependsOn: []
-  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
   jobs:
   - job: windows_pwsh
     displayName: '[Windows] PowerShell Core'
