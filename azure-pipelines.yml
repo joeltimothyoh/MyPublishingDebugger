@@ -25,7 +25,7 @@ resources:
     ref: refs/tags/v0.4.1
 
 variables:
-  PUBLISH_DRY_RUN: true
+  PUBLISH_DRY_RUN: true     # If true, Ensure to simulate with a tag version higher than the latest on PSGallery
 
 stages:
 - stage: build_test
@@ -90,6 +90,57 @@ stages:
 
 - stage: publish
   displayName: Publish
+  dependsOn: build_test
+  condition: and(succeeded(), ne(variables['PUBLISH_DRY_RUN'], 'true'))
+  jobs:
+  - job: windows_pwsh
+    displayName: '[Windows] PowerShell Core'
+    pool:
+      vmImage: windows-2019
+    steps:
+    - checkout: self
+      submodules: recursive
+    - template: templates/azure-pipelines/entrypoint/windows/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/windows/publish.yml@PSModulePublisher
+  # - job: windows_powershell_5_1
+  #   displayName: '[Windows] PowerShell 5.1'
+  #   pool:
+  #     vmImage: windows-2019
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
+  # - job: windows_powershell_5_0
+  #   displayName: '[Windows] PowerShell 5.0'
+  #   pool:
+  #     vmImage: vs2015-win2012r2
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
+  # - job: linux
+  #   displayName: '[Linux] PowerShell Core'
+  #   pool:
+  #     vmImage: ubuntu-16.04
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
+  # - job: macos
+  #   displayName: '[macOS] PowerShell Core'
+  #   pool:
+  #     vmImage: macOS-10.14
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
+
+- stage: publish_dry_run
+  displayName: Publish Dry Run
   dependsOn: []
   condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
   jobs:
@@ -170,7 +221,7 @@ stages:
 - stage: release
   displayName: Release
   dependsOn: publish
-  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'), ne(variables['PUBLISH_DRY_RUN'], 'true'))
+  condition: and(succeeded(), ne(variables['PUBLISH_DRY_RUN'], 'true'))
   jobs:
   - job: linux_container
     displayName: '[Linux] [Container] PowerShell Core'
@@ -190,6 +241,7 @@ stages:
   #     submodules: recursive
   #   - template: templates/azure-pipelines/entrypoint/generate.yml@PSRepositoryReleaseManager
   #   - template: templates/azure-pipelines/entrypoint/release.yml@PSRepositoryReleaseManager
+
 # - stage: publish_release
 #   displayName: Publish, Release
 #   # dependsOn: build_test
