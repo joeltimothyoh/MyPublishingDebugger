@@ -17,7 +17,7 @@ resources:
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
-    ref: refs/heads/8611ede7e35607eb78f343fd84b62f274bf2eeb5
+    ref: refs/heads/refactor/remove-use-of-psboundparameters
   - repository: PSRepositoryReleaseManager
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
