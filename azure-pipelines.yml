@@ -64,14 +64,6 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
-  - job: linux_1604
-    displayName: '[Ubuntu 16.04] PowerShell Core'
-    pool:
-      vmImage: ubuntu-18.04
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
   - job: linux_container
     displayName: '[Linux] [Container] PowerShell'
     pool:
