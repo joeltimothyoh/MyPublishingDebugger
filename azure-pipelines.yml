@@ -17,12 +17,12 @@ resources:
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
-    ref: refs/heads/refactor/remove-use-of-psboundparameters
+    ref: refs/heads/refactor/standardize-casing-of-term-powershell
   - repository: PSRepositoryReleaseManager
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
     endpoint: joeltimothyoh
-    ref: refs/heads/refactor/remove-use-of-psboundparameters
+    ref: refs/heads/refactor/standardize-casing-of-term-powershell
 
 variables:
   PUBLISH_DRY_RUN: false     # If true, Ensure to simulate with a tag version higher than the latest on PSGallery
