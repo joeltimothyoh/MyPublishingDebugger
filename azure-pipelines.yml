@@ -13,7 +13,7 @@ pr:
 
 resources:
   repositories:
-  - repository: PSModulePublisherq
+  - repository: PSModulePublisher
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
