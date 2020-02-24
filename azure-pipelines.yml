@@ -13,7 +13,7 @@ pr:
 
 resources:
   repositories:
-  - repository: PSModulePublisher
+  - repository: PSModulePublisherq
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
@@ -22,7 +22,7 @@ resources:
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
     endpoint: joeltimothyoh
-    ref: refs/heads/refactor/standardize-casing-of-term-powershell
+    ref: refs/heads/refactor/remove-use-of-psboundparameters
 
 variables:
   PUBLISH_DRY_RUN: false     # If true, Ensure to simulate with a tag version higher than the latest on PSGallery
