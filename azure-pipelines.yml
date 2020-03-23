@@ -102,7 +102,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
-  - job: macos
+  - job: macos_10.14
     displayName: '[macOS] PowerShell Core'
     pool:
       vmImage: macOS-10.14
