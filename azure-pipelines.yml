@@ -110,14 +110,6 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
-  - job: macos_1013
-    displayName: '[macOS 10.13] PowerShell Core'
-    pool:
-      vmImage: macOS-10.13
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
 
 - stage: publish
   displayName: Publish
@@ -295,15 +287,6 @@ stages:
     displayName: '[macOS] PowerShell Core'
     pool:
       vmImage: macOS-10.14
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
-  - job: macos_1013
-    displayName: '[macOS 10.13] PowerShell Core'
-    pool:
-      vmImage: macOS-10.13
     steps:
     - checkout: self
       submodules: recursive
