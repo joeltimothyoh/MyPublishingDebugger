@@ -48,14 +48,6 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
-  - job: windows_powershell_5_0
-    displayName: '[Windows] PowerShell 5.0'
-    pool:
-      vmImage: vs2015-win2012r2
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
   - job: linux
     displayName: '[Linux] PowerShell Core'
     pool:
@@ -134,15 +126,6 @@ stages:
   #     submodules: recursive
   #   - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
-  # - job: windows_powershell_5_0
-  #   displayName: '[Windows] PowerShell 5.0'
-  #   pool:
-  #     vmImage: vs2015-win2012r2
-  #   steps:
-  #   - checkout: self
-  #     submodules: recursive
-  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
-  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
   # - job: linux
   #   displayName: '[Linux] PowerShell Core'
   #   pool:
@@ -204,24 +187,6 @@ stages:
     displayName: '[Windows] PowerShell 5.1'
     pool:
       vmImage: windows-2019
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
-  - job: windows_powershell_5_0
-    displayName: '[Windows] PowerShell 5.0'
-    pool:
-      vmImage: vs2015-win2012r2
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
-  - job: windows_1803
-    displayName: '[Windows Server Core 1803] Windows PowerShell'
-    pool:
-      vmImage: win1803
     steps:
     - checkout: self
       submodules: recursive
