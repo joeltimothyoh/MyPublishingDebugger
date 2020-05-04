@@ -17,7 +17,7 @@ resources:
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
-    ref: refs/heads/refactor/revise-handling-for-if-psrepository-is-unspecified-in-invoke-psmodulepublisher-ps1
+    ref: refs/tags/v0.3.4
   - repository: PSRepositoryReleaseManager
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
