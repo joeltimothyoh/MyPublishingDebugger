@@ -22,7 +22,7 @@ resources:
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
     endpoint: joeltimothyoh
-    ref: refs/heads/refactor/bump-submodule-psgithubrestapi-to-v0.1.7
+    ref: refs/tags/v0.6.1
 
 variables:
   PUBLISH_DRY_RUN: false     # If true, Ensure to simulate with a tag version higher than the latest on PSGallery
