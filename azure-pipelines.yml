@@ -17,7 +17,7 @@ resources:
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
-    ref: refs/tags/v0.3.4
+    ref: refs/heads/master
   - repository: PSRepositoryReleaseManager
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
