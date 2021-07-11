@@ -17,12 +17,12 @@ resources:
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
-    ref: 231f888c2bcfd7f25a0dca7b71d164023ac5010a
+    ref: 875cab20a3a0fd9943afb6b9863d21635abc8a4a
   - repository: PSRepositoryReleaseManager
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
     endpoint: joeltimothyoh
-    ref: e148b5051552c45a5df55b3a77be129ed2ac1032
+    ref: f6b03d07c590488089d0b2c28ef0cb45210a1a32
 
 variables:
   PUBLISH_DRY_RUN: true     # If true, Ensure to simulate with a tag version higher than the latest on PSGallery
