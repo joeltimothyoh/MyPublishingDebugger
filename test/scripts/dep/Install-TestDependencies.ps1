@@ -19,7 +19,7 @@ try {
 
     if ($env:OS -ne 'Windows_NT') {
         if ($IsLinux) {
-            "Installing dependencies for linux" | Write-Host
+            "Installing dependencies for Linux" | Write-Host
         }
         if ($IsMacOS) {
             "Installing dependencies for MacOS" | Write-Host
