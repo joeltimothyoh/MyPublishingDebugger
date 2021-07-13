@@ -26,7 +26,7 @@ resources:
     ref: ceab7a1e32bcaa4379026fde4e9598df4184cb89
 
 variables:
-  PUBLISH_DRY_RUN: true     # If true, Ensure to simulate with a tag version higher than the latest on PSGallery
+  PUBLISH_DRY_RUN: false     # If true, Ensure to simulate with a tag version higher than the latest on PSGallery
 
 stages:
 - stage: build_test
@@ -267,24 +267,24 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
-  - job: linux_ubuntu_1804_container
-    displayName: '[Linux Ubuntu 18.04] [Container] PowerShell'
-    pool:
-      vmImage: ubuntu-18.04
-    strategy:
-      matrix:
-        7.0.0:
-          containerImage: joeltimothyoh/powershell:7.0.0-ubuntu-18.04-git-sudo
-        6.2.0:
-          containerImage: joeltimothyoh/powershell:6.2.0-ubuntu-18.04-git-sudo
-        6.1.0:
-          containerImage: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git-sudo
-    container: $[ variables['containerImage'] ]
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
-    - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
+  # - job: linux_ubuntu_1804_container
+  #   displayName: '[Linux Ubuntu 18.04] [Container] PowerShell'
+  #   pool:
+  #     vmImage: ubuntu-18.04
+  #   strategy:
+  #     matrix:
+  #       7.0.0:
+  #         containerImage: joeltimothyoh/powershell:7.0.0-ubuntu-18.04-git-sudo
+  #       6.2.0:
+  #         containerImage: joeltimothyoh/powershell:6.2.0-ubuntu-18.04-git-sudo
+  #       6.1.0:
+  #         containerImage: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git-sudo
+  #   container: $[ variables['containerImage'] ]
+  #   steps:
+  #   - checkout: self
+  #     submodules: recursive
+  #   - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
   # - job: linux_ubuntu_1604_container
   #   displayName: '[Linux Ubuntu 16.04] [Container] PowerShell 6.1.0'
   #   pool:
