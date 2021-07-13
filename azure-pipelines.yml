@@ -26,7 +26,7 @@ resources:
     ref: ceab7a1e32bcaa4379026fde4e9598df4184cb89
 
 variables:
-  PUBLISH_DRY_RUN: false     # If true, Ensure to simulate with a tag version higher than the latest on PSGallery
+  PUBLISH_DRY_RUN: true     # If true, Ensure to simulate with a tag version higher than the latest on PSGallery
 
 stages:
 - stage: build_test
