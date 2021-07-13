@@ -11,6 +11,7 @@ pr:
     include:
     - '*'
 
+# Ensure refs specified here matches those of submodules committed
 resources:
   repositories:
   - repository: PSModulePublisher
