@@ -40,7 +40,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/windows/build-test.yml@PSModulePublisher
   - job: windows_2019
     displayName: '[Windows Server 2019] PowerShell Core'
     pool:
@@ -48,7 +48,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/windows/build-test.yml@PSModulePublisher
   - job: windows_powershell_5_1
     displayName: '[Windows] PowerShell 5.1'
     pool:
@@ -56,7 +56,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/windows/powershell/build-test.yml@PSModulePublisher
   - job: windows_powershell_5_1_windows_2019
     displayName: '[Windows Server 2019] Windows PowerShell'
     pool:
@@ -64,7 +64,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/windows/powershell/build-test.yml@PSModulePublisher
   - job: linux
     displayName: '[Linux] PowerShell Core'
     pool:
@@ -72,7 +72,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
   - job: linux_ubuntu_1804
     displayName: '[Linux Ubuntu 20.04] PowerShell Core'
     pool:
@@ -80,7 +80,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
   - job: linux_container
     displayName: '[Linux] [Container] PowerShell'
     pool:
@@ -97,7 +97,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
   - job: linux_ubuntu_2004_container
     displayName: '[Linux Ubuntu 20.04] [Container] PowerShell'
     pool:
@@ -114,7 +114,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
   - job: macos
     displayName: '[macOS] PowerShell Core'
     pool:
@@ -122,7 +122,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/macos/build-test.yml@PSModulePublisher
   - job: macos_1013
     displayName: '[macOS 13] PowerShell Core'
     pool:
@@ -130,7 +130,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/macos/build-test.yml@PSModulePublisher
 
 - stage: publish
   displayName: Publish
@@ -144,7 +144,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/windows/build-test.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/windows/publish.yml@PSModulePublisher
   # - job: windows_powershell_5_1
   #   displayName: '[Windows] PowerShell 5.1'
@@ -153,7 +153,7 @@ stages:
   #   steps:
   #   - checkout: self
   #     submodules: recursive
-  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/build-test.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
   # - job: linux
   #   displayName: '[Linux] PowerShell Core'
@@ -162,7 +162,7 @@ stages:
   #   steps:
   #   - checkout: self
   #     submodules: recursive
-  #   - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
   # - job: macos_1013
   #   displayName: '[macOS 13] PowerShell Core'
@@ -171,7 +171,7 @@ stages:
   #   steps:
   #   - checkout: self
   #     submodules: recursive
-  #   - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/macos/build-test.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
 
 - stage: release
@@ -211,7 +211,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/windows/build-test.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/windows/publish.yml@PSModulePublisher
   - job: windows_powershell_5_1
     displayName: '[Windows] PowerShell 5.1'
@@ -220,7 +220,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/windows/powershell/build-test.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
   - job: windows_2019
     displayName: '[Windows Server 2019] Windows PowerShell'
@@ -229,7 +229,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/windows/powershell/build-test.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
   - job: linux
     displayName: '[Linux] PowerShell Core'
@@ -238,7 +238,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
   - job: linux_ubuntu_1804
     displayName: '[Linux Ubuntu 20.04] PowerShell Core'
@@ -247,7 +247,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
   # - job: linux_ubuntu_1804_container
   #   displayName: '[Linux Ubuntu 22.04] [Container] PowerShell'
@@ -265,7 +265,7 @@ stages:
   #   steps:
   #   - checkout: self
   #     submodules: recursive
-  #   - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
+  #   - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
   - job: macos
     displayName: '[macOS] PowerShell Core'
@@ -274,7 +274,7 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/macos/build-test.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
   - job: macos_1013
     displayName: '[macOS 13] PowerShell Core'
@@ -283,5 +283,5 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
-    - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/macos/build-test.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
