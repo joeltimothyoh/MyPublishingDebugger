@@ -34,9 +34,17 @@ stages:
   condition: and(succeeded(), ne(variables['PUBLISH_DRY_RUN'], 'true'))
   jobs:
   - job: windows_pwsh
-    displayName: '[Windows] PowerShell Latest'
+    displayName: '[Windows] PowerShell Core'
     pool:
       vmImage: windows-2022
+    steps:
+    - checkout: self
+      submodules: recursive
+    - template: templates/azure-pipelines/entrypoint/windows/continuous-build.yml@PSModulePublisher
+  - job: windows_2019
+    displayName: '[Windows Server 2019] PowerShell Core'
+    pool:
+      vmImage: windows-2019
     steps:
     - checkout: self
       submodules: recursive
@@ -58,17 +66,17 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
   - job: linux
-    displayName: '[Linux] PowerShell Latest'
+    displayName: '[Linux] PowerShell Core'
     pool:
-      vmImage: ubuntu-20.04
+      vmImage: ubuntu-22.04
     steps:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
   - job: linux_ubuntu_1804
-    displayName: '[Linux Ubuntu 18.04] PowerShell Latest'
+    displayName: '[Linux Ubuntu 20.04] PowerShell Core'
     pool:
-      vmImage: ubuntu-18.04
+      vmImage: ubuntu-20.04
     steps:
     - checkout: self
       submodules: recursive
@@ -76,7 +84,7 @@ stages:
   - job: linux_container
     displayName: '[Linux] [Container] PowerShell'
     pool:
-      vmImage: ubuntu-20.04
+      vmImage: ubuntu-22.04
     strategy:
       matrix:
         7.0.0:
@@ -90,10 +98,10 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
-  - job: linux_ubuntu_1804_container
-    displayName: '[Linux Ubuntu 18.04] [Container] PowerShell'
+  - job: linux_ubuntu_2004_container
+    displayName: '[Linux Ubuntu 20.04] [Container] PowerShell'
     pool:
-      vmImage: ubuntu-18.04
+      vmImage: ubuntu-20.04
     strategy:
       matrix:
         7.0.0:
@@ -108,17 +116,17 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
   - job: macos
-    displayName: '[macOS] PowerShell Latest'
+    displayName: '[macOS] PowerShell Core'
     pool:
-      vmImage: macOS-10.15
+      vmImage: macos-14
     steps:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
-  - job: macos_1014
-    displayName: '[macOS 10.14] PowerShell Latest'
+  - job: macos_1013
+    displayName: '[macOS 13] PowerShell Core'
     pool:
-      vmImage: macOS-10.14
+      vmImage: macos-13
     steps:
     - checkout: self
       submodules: recursive
@@ -130,7 +138,7 @@ stages:
   condition: and(succeeded(), ne(variables['PUBLISH_DRY_RUN'], 'true'))
   jobs:
   - job: windows_pwsh
-    displayName: '[Windows] PowerShell Latest'
+    displayName: '[Windows] PowerShell Core'
     pool:
       vmImage: windows-2022
     steps:
@@ -148,7 +156,7 @@ stages:
   #   - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
   # - job: linux
-  #   displayName: '[Linux] PowerShell Latest'
+  #   displayName: '[Linux] PowerShell Core'
   #   pool:
   #     vmImage: ubuntu-20.04
   #   steps:
@@ -156,10 +164,10 @@ stages:
   #     submodules: recursive
   #   - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
-  # - job: macos
-  #   displayName: '[macOS] PowerShell Latest'
+  # - job: macos_1013
+  #   displayName: '[macOS 13] PowerShell Core'
   #   pool:
-  #     vmImage: macOS-10.14
+  #     vmImage: macos-13
   #   steps:
   #   - checkout: self
   #     submodules: recursive
@@ -171,20 +179,20 @@ stages:
   dependsOn: publish
   condition: and(succeeded(), ne(variables['PUBLISH_DRY_RUN'], 'true'))
   jobs:
-  - job: linux_ubuntu_1804_container
-    displayName: '[Linux Ubuntu 18.04] [Container] PowerShell 6.1.0'
+  - job: linux_ubuntu_2204_container
+    displayName: '[Linux Ubuntu 22.04] [Container] PowerShell 6.1.0'
     pool:
-      vmImage: ubuntu-18.04
+      vmImage: ubuntu-22.04
     container: joeltimothyoh/powershell:6.1.0-ubuntu-18.04-git
     steps:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/generate.yml@PSRepositoryReleaseManager
     - template: templates/azure-pipelines/entrypoint/release.yml@PSRepositoryReleaseManager
-  # - job: linux_ubuntu_1804
-  #   displayName: '[Linux Ubuntu 18.04] PowerShell Latest'
+  # - job: linux_ubuntu_2004
+  #   displayName: '[Linux Ubuntu 20.04] PowerShell Core'
   #   pool:
-  #     vmImage: ubuntu-18.04
+  #     vmImage: ubuntu-20.04
   #   steps:
   #   - checkout: self
   #     submodules: recursive
@@ -197,7 +205,7 @@ stages:
   condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'), eq(variables['PUBLISH_DRY_RUN'], 'true'))
   jobs:
   - job: windows_pwsh
-    displayName: '[Windows] PowerShell Latest'
+    displayName: '[Windows] PowerShell Core'
     pool:
       vmImage: windows-2022
     steps:
@@ -224,27 +232,27 @@ stages:
     - template: templates/azure-pipelines/entrypoint/windows/powershell/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
   - job: linux
-    displayName: '[Linux] PowerShell Latest'
+    displayName: '[Linux] PowerShell Core'
     pool:
-      vmImage: ubuntu-18.04
+      vmImage: ubuntu-22.04
     steps:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
   - job: linux_ubuntu_1804
-    displayName: '[Linux Ubuntu 18.04] PowerShell Latest'
+    displayName: '[Linux Ubuntu 20.04] PowerShell Core'
     pool:
-      vmImage: ubuntu-18.04
+      vmImage: ubuntu-20.04
     steps:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
   # - job: linux_ubuntu_1804_container
-  #   displayName: '[Linux Ubuntu 18.04] [Container] PowerShell'
+  #   displayName: '[Linux Ubuntu 22.04] [Container] PowerShell'
   #   pool:
-  #     vmImage: ubuntu-18.04
+  #     vmImage: ubuntu-22.04
   #   strategy:
   #     matrix:
   #       7.0.0:
@@ -260,18 +268,18 @@ stages:
   #   - template: templates/azure-pipelines/entrypoint/linux/continuous-build.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
   - job: macos
-    displayName: '[macOS] PowerShell Latest'
+    displayName: '[macOS] PowerShell Core'
     pool:
-      vmImage: macOS-10.15
+      vmImage: macos-14
     steps:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/macos/continuous-build.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
-  - job: macos_1014
-    displayName: '[macOS 10.14] PowerShell Latest'
+  - job: macos_1013
+    displayName: '[macOS 13] PowerShell Core'
     pool:
-      vmImage: macOS-10.14
+      vmImage: macos-13
     steps:
     - checkout: self
       submodules: recursive
