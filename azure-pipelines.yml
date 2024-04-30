@@ -33,7 +33,7 @@ stages:
   displayName: Build, Test
   condition: and(succeeded(), ne(variables['PUBLISH_DRY_RUN'], 'true'))
   jobs:
-  - job: windows_2022_pwsh
+  - job: windows_2022_powershell_core
     displayName: '[Windows Server 2022] PowerShell Core'
     pool:
       vmImage: windows-2022
@@ -41,7 +41,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/windows/build-test.yml@PSModulePublisher
-  - job: windows_2019_pwsh
+  - job: windows_2019_powershell_core
     displayName: '[Windows Server 2019] PowerShell Core'
     pool:
       vmImage: windows-2019
@@ -65,7 +65,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/windows/powershell/build-test.yml@PSModulePublisher
-  - job: ubuntu_2204_pwsh
+  - job: ubuntu_2204_powershell_core
     displayName: '[Ubuntu 22.04] PowerShell Core'
     pool:
       vmImage: ubuntu-22.04
@@ -73,7 +73,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
-  - job: ubuntu_2004_pwsh
+  - job: ubuntu_2004_powershell_core
     displayName: '[Ubuntu 20.04] PowerShell Core'
     pool:
       vmImage: ubuntu-20.04
@@ -123,7 +123,7 @@ stages:
   #   - checkout: self
   #     submodules: recursive
   #   - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
-  - job: macos_14_pwsh
+  - job: macos_14_powershell_core
     displayName: '[macOS 14] PowerShell Core'
     pool:
       vmImage: macos-14
@@ -131,7 +131,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/macos/build-test.yml@PSModulePublisher
-  - job: macos_13_pwsh
+  - job: macos_13_powershell_core
     displayName: '[macOS 13] PowerShell Core'
     pool:
       vmImage: macos-13
@@ -145,7 +145,7 @@ stages:
   dependsOn: build_test
   condition: and(succeeded(), ne(variables['PUBLISH_DRY_RUN'], 'true'))
   jobs:
-  - job: windows_2022_pwsh
+  - job: windows_2022_powershell_core
     displayName: '[Windows Server 2022] PowerShell Core'
     pool:
       vmImage: windows-2022
@@ -163,7 +163,7 @@ stages:
   #     submodules: recursive
   #   - template: templates/azure-pipelines/entrypoint/windows/powershell/build-test.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
-  # - job: ubuntu_2204_pwsh
+  # - job: ubuntu_2204_powershell_core
   #   displayName: '[Ubuntu 22.04] PowerShell Core'
   #   pool:
   #     vmImage: ubuntu-22.04
@@ -172,7 +172,7 @@ stages:
   #     submodules: recursive
   #   - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
-  # - job: macos_14_pwsh
+  # - job: macos_14_powershell_core
   #   displayName: '[macOS 14] PowerShell Core'
   #   pool:
   #     vmImage: macos-14
@@ -197,7 +197,7 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/generate.yml@PSRepositoryReleaseManager
     - template: templates/azure-pipelines/entrypoint/release.yml@PSRepositoryReleaseManager
-  # - job: ubuntu_2004_pwsh
+  # - job: ubuntu_2004_powershell_core
   #   displayName: '[Ubuntu 20.04] PowerShell Core'
   #   pool:
   #     vmImage: ubuntu-20.04
@@ -212,7 +212,7 @@ stages:
   dependsOn: []
   condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'), eq(variables['PUBLISH_DRY_RUN'], 'true'))
   jobs:
-  - job: windows_2022_pwsh
+  - job: windows_2022_powershell_core
     displayName: '[Windows Server 2022] PowerShell Core'
     pool:
       vmImage: windows-2022
@@ -239,7 +239,7 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/windows/powershell/build-test.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
-  - job: ubuntu_2204_pwsh
+  - job: ubuntu_2204_powershell_core
     displayName: '[Ubuntu 22.04] PowerShell Core'
     pool:
       vmImage: ubuntu-22.04
@@ -248,7 +248,7 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
-  - job: ubuntu_2004_pwsh
+  - job: ubuntu_2004_powershell_core
     displayName: '[Ubuntu 20.04] PowerShell Core'
     pool:
       vmImage: ubuntu-20.04
@@ -275,7 +275,7 @@ stages:
   #     submodules: recursive
   #   - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
   #   - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
-  - job: macos_14_pwsh
+  - job: macos_14_powershell_core
     displayName: '[macOS 14] PowerShell Core'
     pool:
       vmImage: macos-14
@@ -284,7 +284,7 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/macos/build-test.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
-  - job: macos_13_pwsh
+  - job: macos_13_powershell_core
     displayName: '[macOS 13] PowerShell Core'
     pool:
       vmImage: macos-13
