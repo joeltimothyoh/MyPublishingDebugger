@@ -81,7 +81,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
-  - job: ubuntu_2204_container
+  - job: ubuntu_2204_container_powershell_core
     displayName: '[Ubuntu 22.04] [Container] PowerShell'
     pool:
       vmImage: ubuntu-22.04
@@ -106,7 +106,7 @@ stages:
     - checkout: self
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
-  # - job: ubuntu_2004_container
+  # - job: ubuntu_2004_container_powershell_core
   #   displayName: '[Ubuntu 20.04] [Container] PowerShell'
   #   pool:
   #     vmImage: ubuntu-20.04
@@ -187,7 +187,7 @@ stages:
   dependsOn: publish
   condition: and(succeeded(), ne(variables['PUBLISH_DRY_RUN'], 'true'))
   jobs:
-  - job: ubuntu_2204_container
+  - job: ubuntu_2204_container_powershell_core
     displayName: '[Ubuntu 22.04] [Container] PowerShell Core'
     pool:
       vmImage: ubuntu-22.04
@@ -257,7 +257,7 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
-  # - job: ubuntu_2204_container
+  # - job: ubuntu_2204_container_powershell_core
   #   displayName: '[Ubuntu 22.04] [Container] PowerShell'
   #   pool:
   #     vmImage: ubuntu-22.04
