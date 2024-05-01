@@ -126,7 +126,7 @@ stages:
   - job: macos_14_powershell_core
     displayName: '[macOS 14] PowerShell Core'
     pool:
-      vmImage: macos-14
+      vmImage: macOS-14
     steps:
     - checkout: self
       submodules: recursive
@@ -134,7 +134,7 @@ stages:
   - job: macos_13_powershell_core
     displayName: '[macOS 13] PowerShell Core'
     pool:
-      vmImage: macos-13
+      vmImage: macOS-13
     steps:
     - checkout: self
       submodules: recursive
@@ -175,7 +175,7 @@ stages:
   # - job: macos_14_powershell_core
   #   displayName: '[macOS 14] PowerShell Core'
   #   pool:
-  #     vmImage: macos-14
+  #     vmImage: macOS-14
   #   steps:
   #   - checkout: self
   #     submodules: recursive
@@ -278,7 +278,7 @@ stages:
   - job: macos_14_powershell_core
     displayName: '[macOS 14] PowerShell Core'
     pool:
-      vmImage: macos-14
+      vmImage: macOS-14
     steps:
     - checkout: self
       submodules: recursive
@@ -287,7 +287,7 @@ stages:
   - job: macos_13_powershell_core
     displayName: '[macOS 13] PowerShell Core'
     pool:
-      vmImage: macos-13
+      vmImage: macOS-13
     steps:
     - checkout: self
       submodules: recursive
