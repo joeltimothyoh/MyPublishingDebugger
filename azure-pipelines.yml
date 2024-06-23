@@ -87,11 +87,11 @@ stages:
       vmImage: ubuntu-22.04
     strategy:
       matrix:
-        7.4.2:
+        7.4:
           containerImage: theohbrothers/docker-powershell:7.4-ubuntu-22.04-git
-        7.3.9:
+        7.3:
           containerImage: theohbrothers/docker-powershell:7.3-ubuntu-22.04-git
-        7.2.2:
+        7.2:
           containerImage: theohbrothers/docker-powershell:7.2-ubuntu-22.04-git
         7.1.5:
           containerImage: theohbrothers/docker-powershell:7.1.5-ubuntu-20.04-git
