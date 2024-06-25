@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-    - 'master'
+    - '*'
   tags:
     include:
     - '*'
@@ -18,7 +18,7 @@ resources:
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
-    ref: refs/heads/refactor/module-standardize-module-manifest-definition-file
+    ref: refs/tags/v0.8.0
   - repository: PSRepositoryReleaseManager
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
@@ -26,7 +26,7 @@ resources:
     ref: refs/tags/v0.8.0
 
 variables:
-  PUBLISH_DRY_RUN: true     # If true, Ensure to simulate with a tag version higher than the latest on PSGallery
+  PUBLISH_DRY_RUN: false     # If true, Ensure to simulate with a tag version higher than the latest on PSGallery
 
 stages:
 - stage: build_test
