@@ -18,7 +18,7 @@ resources:
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
-    ref: refs/heads/refactor/module-standardize-module-manifest-definition-file
+    ref: refs/tags/v0.9.0
   - repository: PSRepositoryReleaseManager
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
