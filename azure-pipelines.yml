@@ -18,7 +18,7 @@ resources:
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
-    ref: refs/tags/v0.9.0
+    ref: refs/heads/enhancement/module-use-default-module-manifest-path-for-functions-invoke-test-and-invoke-publish
   - repository: PSRepositoryReleaseManager
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
