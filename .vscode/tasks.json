@@ -31,56 +31,56 @@
                 "false",
             ],
             "default": "true"
-        },
+        }
     ],
     "tasks": [
         {
-            "label": "Build, Test, Publish MyPublishingDebugger (pwsh)",
+            "label": "Build, Test, Publish module (pwsh)",
             "type": "shell",
-            "command": "NUGET_API_KEY='${input:NUGET_API_KEY}' MODULE_VERSION='${input:MODULE_VERSION}' pwsh -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./src/MyPublishingDebugger/MyPublishingDebugger.psm1 -Force; Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-PSModulePublisher -Repository \"${input:Repository}\" -DryRun:$([System.Convert]::ToBoolean(\"${input:DryRun}\"))'",
+            "command": "NUGET_API_KEY='${input:NUGET_API_KEY}' MODULE_VERSION='${input:MODULE_VERSION}' pwsh -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-PSModulePublisher -Repository \"${input:Repository}\" -DryRun:$([System.Convert]::ToBoolean(\"${input:DryRun}\"))'",
             "group": "build"
         },
         {
-            "label": "Build, Test, Publish MyPublishingDebugger (powershell)",
+            "label": "Build, Test, Publish module (powershell)",
             "type": "shell",
-            "command": "NUGET_API_KEY='${input:NUGET_API_KEY}' MODULE_VERSION='${input:MODULE_VERSION}' powershell -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./src/MyPublishingDebugger/MyPublishingDebugger.psm1 -Force; Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-PSModulePublisher -Repository \"${input:Repository}\" -DryRun:$([System.Convert]::ToBoolean(\"${input:DryRun}\"))'",
+            "command": "NUGET_API_KEY='${input:NUGET_API_KEY}' MODULE_VERSION='${input:MODULE_VERSION}' powershell -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-PSModulePublisher -Repository \"${input:Repository}\" -DryRun:$([System.Convert]::ToBoolean(\"${input:DryRun}\"))'",
             "group": "build"
         },
         {
-            "label": "Build MyPublishingDebugger (pwsh)",
+            "label": "Build module (pwsh)",
             "type": "shell",
-            "command": "MODULE_VERSION='${input:MODULE_VERSION}' pwsh -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./src/MyPublishingDebugger/MyPublishingDebugger.psm1 -Force; Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-Build'",
+            "command": "MODULE_VERSION='${input:MODULE_VERSION}' pwsh -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-Build'",
             "group": "build"
         },
         {
-            "label": "Build MyPublishingDebugger (powershell)",
+            "label": "Build module (powershell)",
             "type": "shell",
-            "command": "MODULE_VERSION='${input:MODULE_VERSION}' powershell -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./src/MyPublishingDebugger/MyPublishingDebugger.psm1 -Force; Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-Build'",
+            "command": "MODULE_VERSION='${input:MODULE_VERSION}' powershell -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-Build'",
             "group": "build"
         },
         {
-            "label": "Test MyPublishingDebugger (pwsh)",
+            "label": "Test module (pwsh)",
             "type": "shell",
-            "command": "MODULE_VERSION='${input:MODULE_VERSION}' pwsh -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./src/MyPublishingDebugger/MyPublishingDebugger.psm1 -Force; Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-Test -ModuleManifestPath ./src/MyPublishingDebugger/MyPublishingDebugger.psd1'",
+            "command": "MODULE_VERSION='${input:MODULE_VERSION}' pwsh -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-Test'",
             "group": "build"
         },
         {
-            "label": "Test MyPublishingDebugger (powershell)",
+            "label": "Test module (powershell)",
             "type": "shell",
-            "command": "MODULE_VERSION='${input:MODULE_VERSION}' powershell -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./src/MyPublishingDebugger/MyPublishingDebugger.psm1 -Force; Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-Test -ModuleManifestPath ./src/MyPublishingDebugger/MyPublishingDebugger.psd1'",
+            "command": "MODULE_VERSION='${input:MODULE_VERSION}' powershell -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-Test'",
             "group": "build"
         },
         {
-            "label": "Publish MyPublishingDebugger (pwsh)",
+            "label": "Publish module (pwsh)",
             "type": "shell",
-            "command": "NUGET_API_KEY='${input:NUGET_API_KEY}' MODULE_VERSION='${input:MODULE_VERSION}' pwsh -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./src/MyPublishingDebugger/MyPublishingDebugger.psm1 -Force; Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-Publish -ModuleManifestPath ./src/MyPublishingDebugger/MyPublishingDebugger.psd1 -Repository \"${input:Repository}\" -DryRun:$([System.Convert]::ToBoolean(\"${input:DryRun}\"))'",
+            "command": "NUGET_API_KEY='${input:NUGET_API_KEY}' MODULE_VERSION='${input:MODULE_VERSION}' pwsh -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-Publish -Repository \"${input:Repository}\" -DryRun:$([System.Convert]::ToBoolean(\"${input:DryRun}\"))'",
             "group": "build"
         },
         {
-            "label": "Publish MyPublishingDebugger (powershell)",
+            "label": "Publish module (powershell)",
             "type": "shell",
-            "command": "NUGET_API_KEY='${input:NUGET_API_KEY}' MODULE_VERSION='${input:MODULE_VERSION}' powershell -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./src/MyPublishingDebugger/MyPublishingDebugger.psm1 -Force; Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-Publish -ModuleManifestPath ./src/MyPublishingDebugger/MyPublishingDebugger.psd1 -Repository \"${input:Repository}\" -DryRun:$([System.Convert]::ToBoolean(\"${input:DryRun}\"))'",
+            "command": "NUGET_API_KEY='${input:NUGET_API_KEY}' MODULE_VERSION='${input:MODULE_VERSION}' powershell -NoLogo -NonInteractive -NoProfile -Command 'Import-Module ./build/PSModulePublisher/src/PSModulePublisher/PSModulePublisher.psm1 -Force; Invoke-Publish -Repository \"${input:Repository}\" -DryRun:$([System.Convert]::ToBoolean(\"${input:DryRun}\"))'",
             "group": "build"
-        },
+        }
     ]
 }
