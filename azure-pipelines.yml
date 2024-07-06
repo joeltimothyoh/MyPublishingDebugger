@@ -154,33 +154,33 @@ stages:
       submodules: recursive
     - template: templates/azure-pipelines/entrypoint/windows/build-test.yml@PSModulePublisher
     - template: templates/azure-pipelines/entrypoint/windows/publish.yml@PSModulePublisher
-  # - job: windows_2019_powershell_5_1
-  #   displayName: '[Windows Server 2019] PowerShell 5.1'
-  #   pool:
-  #     vmImage: windows-2019
-  #   steps:
-  #   - checkout: self
-  #     submodules: recursive
-  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/build-test.yml@PSModulePublisher
-  #   - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
-  # - job: ubuntu_2204_powershell_core
-  #   displayName: '[Ubuntu 22.04] PowerShell Core'
-  #   pool:
-  #     vmImage: ubuntu-22.04
-  #   steps:
-  #   - checkout: self
-  #     submodules: recursive
-  #   - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
-  #   - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
-  # - job: macos_14_powershell_core
-  #   displayName: '[macOS 14] PowerShell Core'
-  #   pool:
-  #     vmImage: macos-14
-  #   steps:
-  #   - checkout: self
-  #     submodules: recursive
-  #   - template: templates/azure-pipelines/entrypoint/macos/build-test.yml@PSModulePublisher
-  #   - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
+  - job: windows_2019_powershell_5_1
+    displayName: '[Windows Server 2019] PowerShell 5.1'
+    pool:
+      vmImage: windows-2019
+    steps:
+    - checkout: self
+      submodules: recursive
+    - template: templates/azure-pipelines/entrypoint/windows/powershell/build-test.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/windows/powershell/publish.yml@PSModulePublisher
+  - job: ubuntu_2204_powershell_core
+    displayName: '[Ubuntu 22.04] PowerShell Core'
+    pool:
+      vmImage: ubuntu-22.04
+    steps:
+    - checkout: self
+      submodules: recursive
+    - template: templates/azure-pipelines/entrypoint/linux/build-test.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/linux/publish.yml@PSModulePublisher
+  - job: macos_14_powershell_core
+    displayName: '[macOS 14] PowerShell Core'
+    pool:
+      vmImage: macos-14
+    steps:
+    - checkout: self
+      submodules: recursive
+    - template: templates/azure-pipelines/entrypoint/macos/build-test.yml@PSModulePublisher
+    - template: templates/azure-pipelines/entrypoint/macos/publish.yml@PSModulePublisher
 
 - stage: release
   displayName: Release
