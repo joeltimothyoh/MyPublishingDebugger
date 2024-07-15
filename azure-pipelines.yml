@@ -18,7 +18,7 @@ resources:
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
-    ref: refs/heads/enhancement/module-improve-error-handling-in-function-publish-mymodule
+    ref: refs/heads/refactor/ci-tweak-import-module-command-in-azure-pipelines-remote-templates
   - repository: PSRepositoryReleaseManager
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
