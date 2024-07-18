@@ -18,7 +18,7 @@ resources:
     type: github
     name: theohbrothers/PSModulePublisher
     endpoint: joeltimothyoh
-    ref: refs/heads/refactor/ci-tweak-import-module-command-in-azure-pipelines-remote-templates
+    ref: refs/heads/master
   - repository: PSRepositoryReleaseManager
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
