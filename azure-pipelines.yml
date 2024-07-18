@@ -23,7 +23,7 @@ resources:
     type: github
     name: theohbrothers/PSRepositoryReleaseManager
     endpoint: joeltimothyoh
-    ref: refs/tags/v0.12.0
+    ref: refs/tags/v0.13.0
 
 # variables:
 #   PUBLISH_DRY_RUN: true     # If true, Ensure to simulate with a tag version higher than the latest on PSGallery
