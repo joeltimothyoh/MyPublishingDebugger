@@ -32,7 +32,8 @@
                 "false"
             ],
             "default": "true"
-        }        // PSRepositoryReleaseManager
+        },
+        // PSRepositoryReleaseManager
         {
             "id": "PROJECT_DIRECTORY",
             "description": "PROJECT_DIRECTORY?",
